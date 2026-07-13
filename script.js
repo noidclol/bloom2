@@ -15,6 +15,18 @@ const games = [
       "Ball Magnet"
     ],
     date: "2026-07-11"
+  },
+  {
+    name: "Basketball Zero",
+    status: "Live",
+    note: "",
+    image: "https://tr.rbxcdn.com/180DAY-f677e0ae22f5ed55f275307e02dc2ba5/768/432/Image/Webp/noFilter",
+    features: [
+      "Auto Release",
+      "Timing Options",
+      "Speed"
+    ],
+    date: "2026-07-13"
   }
 ];
 
