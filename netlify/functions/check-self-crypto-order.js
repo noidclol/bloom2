@@ -2,6 +2,7 @@ const crypto = require("crypto");
 const { sendMail } = require("./_mail");
 
 exports.handler = async (event) => {
+  if (event.httpMethod === "OPTIONS") return json(200, { ok: true });
   if (event.httpMethod !== "POST") return json(405, { error: "Method not allowed" });
 
   let body;
@@ -136,7 +137,12 @@ function escapeHtml(value) {
 function json(statusCode, data) {
   return {
     statusCode,
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Methods": "POST, OPTIONS"
+    },
     body: JSON.stringify(data)
   };
 }

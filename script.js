@@ -163,7 +163,6 @@ const coinSelectedImg = document.querySelector("#coin-selected-img");
 const coinSelectedName = document.querySelector("#coin-selected-name");
 const coinSelectedMeta = document.querySelector("#coin-selected-meta");
 const walletAddress = document.querySelector("#wallet-address");
-const checkoutEmail = document.querySelector("#checkout-email");
 const invoiceStatus = document.querySelector("#invoice-status");
 const createInvoiceButton = document.querySelector("#create-invoice");
 const deliveredKey = document.querySelector("#delivered-key");
@@ -185,6 +184,9 @@ const statusConfirmations = document.querySelector("#status-confirmations");
 const statusProgressPayment = document.querySelector("#status-progress-payment");
 const statusProgressKey = document.querySelector("#status-progress-key");
 const copyWallet = document.querySelector("#copy-wallet");
+const apiBase = location.hostname.endsWith("github.io")
+  ? "https://peppy-swan-b14216.netlify.app"
+  : "";
 const walletMap = {
   BTC: "bc1qy87gyxqt2axyxvan6vkacauha2v9t2lue03wtc",
   LTC: "LSYPkJLC6ep6CW8diehXEEnWtDBf41LUHn",
@@ -210,7 +212,7 @@ function setPaymentMethod(method) {
 
   if (method === "crypto" && !activeOrder) {
     const details = coinMeta[selectedCheckout.coin] || coinMeta.BTC;
-    setCheckoutState("ready", `Ready for a <strong>${details.name}</strong> invoice. Enter your email and Bloom will send the payment details.`);
+    setCheckoutState("ready", `Ready for a <strong>${details.name}</strong> invoice. Bloom will open the payment page next.`);
   }
 }
 
@@ -244,7 +246,7 @@ function openCheckout(plan, price) {
   if (checkoutSummaryPrice) checkoutSummaryPrice.textContent = price;
   activeOrder = null;
   setPaymentMethod("crypto");
-  setCheckoutState("ready", "Choose a coin and enter your email. The full invoice and key vault open after this step.");
+  setCheckoutState("ready", "Choose a coin. The full invoice and key vault open after this step.");
   checkoutModal.classList.add("is-open");
   checkoutModal.setAttribute("aria-hidden", "false");
 }
@@ -284,7 +286,7 @@ document.querySelectorAll(".coin-menu button").forEach((button) => {
     coinTrigger?.setAttribute("aria-expanded", "false");
     if (!activeOrder) {
       const details = coinMeta[selectedCheckout.coin] || coinMeta.BTC;
-      setCheckoutState("ready", `Ready for a <strong>${details.name}</strong> invoice. Add your email to continue.`);
+      setCheckoutState("ready", `Ready for a <strong>${details.name}</strong> invoice.`);
     }
   });
 });
@@ -299,24 +301,17 @@ document.addEventListener("click", (event) => {
 createInvoiceButton?.addEventListener("click", async () => {
   if (selectedMethod !== "crypto") return;
 
-  const email = (checkoutEmail?.value || "").trim();
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    setCheckoutState("ready", "Add a valid email first so Bloom can send your invoice and access key.");
-    return;
-  }
-
   createInvoiceButton.disabled = true;
   createInvoiceButton.textContent = "Creating invoice...";
   setCheckoutState("creating", "Creating your invoice and opening the order page...");
 
   try {
-    const response = await fetch("/.netlify/functions/create-self-crypto-order", {
+    const response = await fetch(`${apiBase}/.netlify/functions/create-self-crypto-order`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         plan: selectedCheckout.plan,
-        coin: selectedCheckout.coin,
-        email
+        coin: selectedCheckout.coin
       })
     });
 
@@ -403,7 +398,7 @@ statusCheck?.addEventListener("click", async () => {
   statusCopy.textContent = "Checking blockchain confirmations...";
 
   try {
-    const response = await fetch("/.netlify/functions/check-self-crypto-order", {
+    const response = await fetch(`${apiBase}/.netlify/functions/check-self-crypto-order`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(stored)
@@ -426,8 +421,8 @@ statusCheck?.addEventListener("click", async () => {
     statusProgressPayment?.classList.add("is-done");
     statusProgressKey?.classList.add("is-done");
     keyEmailNote.textContent = data.emailDelivery?.sent
-      ? `Your key was emailed to ${stored.email}.`
-      : `Your key was saved to the local email outbox for ${stored.email}.`;
+      ? "Your key was emailed too."
+      : "Your key is unlocked on this page.";
     history.pushState(null, "", "#key");
     showPage("#key");
   } catch (error) {

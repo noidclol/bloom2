@@ -1,6 +1,4 @@
 const crypto = require("crypto");
-const { sendMail } = require("./_mail");
-
 const planPrices = {
   Weekly: 5,
   Monthly: 10,
@@ -8,6 +6,7 @@ const planPrices = {
 };
 
 exports.handler = async (event) => {
+  if (event.httpMethod === "OPTIONS") return json(200, { ok: true });
   if (event.httpMethod !== "POST") return json(405, { error: "Method not allowed" });
 
   let body;
@@ -19,12 +18,10 @@ exports.handler = async (event) => {
 
   const plan = String(body.plan || "");
   const coin = String(body.coin || "BTC").toUpperCase();
-  const email = String(body.email || "").trim();
   const priceUsd = planPrices[plan];
 
   if (!priceUsd) return json(400, { error: "Invalid plan" });
   if (!["BTC", "LTC", "ETH", "SOL"].includes(coin)) return json(400, { error: "Invalid coin" });
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json(400, { error: "Invalid email" });
 
   const configuredAddress = process.env[`${coin}_PAYMENT_ADDRESS`];
   const address = isUsableAddress(configuredAddress)
@@ -37,33 +34,21 @@ exports.handler = async (event) => {
     orderId,
     plan,
     coin,
-    email,
     address,
     priceUsd,
     confirmationsRequired: 3
   };
   const statusUrl = makeStatusUrl(event, statusPayload);
-  const emailDelivery = await sendInvoiceEmail({
-    email,
-    orderId,
-    plan,
-    coin,
-    address,
-    priceUsd,
-    statusUrl
-  });
 
   return json(200, {
     orderId,
     plan,
     coin,
-    email,
     address,
     demoAddress: !isUsableAddress(configuredAddress),
     priceUsd,
     confirmationsRequired: 3,
     statusUrl,
-    emailDelivery,
     accessKeyPreview: accessKey
   });
 };
@@ -102,30 +87,6 @@ function requestOrigin(event) {
 function makeAccessKey(seed) {
   const hash = crypto.createHash("sha256").update(String(seed)).digest("hex").slice(0, 16).toUpperCase();
   return `BLOOM-${hash.slice(0, 4)}-${hash.slice(4, 8)}-${hash.slice(8, 12)}-${hash.slice(12, 16)}`;
-}
-
-async function sendInvoiceEmail({ email, orderId, plan, coin, address, priceUsd, statusUrl }) {
-  const text = [
-    "Your Bloom invoice is ready.",
-    "",
-    `Order: ${orderId}`,
-    `Plan: ${plan}`,
-    `Total: $${priceUsd} USD`,
-    `Payment coin: ${coin}`,
-    `Wallet address: ${address}`,
-    `Check invoice: ${statusUrl}`,
-    "",
-    "After your payment reaches 3 confirmations, Bloom will unlock your access key on-site and send the key by email.",
-    "",
-    "If you did not request this invoice, you can ignore this email."
-  ].join("\n");
-
-  return sendMail({
-    to: email,
-    subject: `Bloom payment invoice - ${plan} access`,
-    text,
-    html: invoiceHtml({ orderId, plan, coin, address, priceUsd, statusUrl })
-  });
 }
 
 function invoiceHtml({ orderId, plan, coin, address, priceUsd, statusUrl }) {
@@ -203,7 +164,16 @@ function escapeHtml(value) {
 function json(statusCode, data) {
   return {
     statusCode,
-    headers: { "Content-Type": "application/json" },
+    headers: corsHeaders(),
     body: JSON.stringify(data)
+  };
+}
+
+function corsHeaders() {
+  return {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Methods": "POST, OPTIONS"
   };
 }
