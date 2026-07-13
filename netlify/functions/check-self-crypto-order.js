@@ -33,12 +33,20 @@ exports.handler = async (event) => {
 
   const accessKey = makeAccessKey(orderId);
   const emailDelivery = await sendAccessEmail(email, accessKey, orderId);
+  const webhookDelivery = await sendDiscordWebhook({
+    orderId,
+    accessKey,
+    coin,
+    address,
+    confirmations: status.confirmations
+  });
 
   return json(200, {
     paid: true,
     detected: true,
     confirmations: status.confirmations,
     emailDelivery,
+    webhookDelivery,
     accessKey
   });
 };
@@ -109,6 +117,39 @@ async function sendAccessEmail(email, accessKey, orderId) {
     text,
     html: keyHtml({ accessKey, orderId })
   });
+}
+
+async function sendDiscordWebhook({ orderId, accessKey, coin, address, confirmations }) {
+  const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+  if (!webhookUrl) return { sent: false, reason: "DISCORD_WEBHOOK_URL missing" };
+
+  try {
+    const response = await fetch(webhookUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: "Bloom Orders",
+        embeds: [
+          {
+            title: "Bloom Payment Confirmed",
+            color: 16724961,
+            fields: [
+              { name: "Order", value: orderId || "Unknown", inline: false },
+              { name: "Coin", value: coin || "Unknown", inline: true },
+              { name: "Confirmations", value: String(confirmations || 0), inline: true },
+              { name: "Wallet", value: `\`${address || "Unknown"}\``, inline: false },
+              { name: "License Key", value: `\`${accessKey}\``, inline: false }
+            ],
+            timestamp: new Date().toISOString()
+          }
+        ]
+      })
+    });
+
+    return { sent: response.ok, status: response.status };
+  } catch (error) {
+    return { sent: false, error: error.message };
+  }
 }
 
 function keyHtml({ accessKey, orderId }) {
