@@ -1,0 +1,14 @@
+{
+  "name": "bloom-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node work/bloom-local-backend.js",
+    "start": "node work/bloom-local-backend.js",
+    "serve": "node work/bloom-local-backend.js",
+    "netlify": "netlify dev"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.38.1"
+  }
+}

@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bloom</title>
+    <meta name="description" content="Bloom is a quality scripting hub with a polished pink frontend.">
+    <link rel="icon" href="assets/bloom-icon.png">
+    <link rel="stylesheet" href="styles.css?v=8">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="Bloom home">
+        <img src="assets/bloom-icon.png" alt="">
+        <span>Bloom</span>
+      </a>
+
+      <nav class="tabs" aria-label="Main navigation">
+        <a href="#home" class="active">Home</a>
+        <a href="#games">Games</a>
+        <a href="#policy">Policy</a>
+      </nav>
+
+      <div class="header-actions" aria-label="Quick links">
+        <a class="icon-link" href="https://discord.gg/aYGe36G9cr" aria-label="Discord">
+          <svg class="discord-mark" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7.4 8.1c3.2-1.4 6-1.4 9.2 0l.8 6.3c-1.4 1.1-2.8 1.6-4.2 1.7l-.5-1c.8-.2 1.5-.5 2.1-1-2 .9-3.8.9-5.8 0 .6.5 1.3.8 2.1 1l-.5 1c-1.4-.1-2.8-.6-4.2-1.7l1-6.3Z"/>
+            <circle cx="9.8" cy="12" r="1"/>
+            <circle cx="14.2" cy="12" r="1"/>
+          </svg>
+        </a>
+        <a class="icon-link" href="#" aria-label="YouTube">
+          <svg class="youtube-mark" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="4" y="7" width="16" height="10" rx="3"/>
+            <path d="M10.6 9.7v4.6L14.8 12l-4.2-2.3Z" class="cutout"/>
+          </svg>
+        </a>
+        <a class="login-link" href="#login">Login</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="page hero" id="home">
+        <div class="hero-glow"></div>
+        <img class="hero-icon" src="assets/bloom-icon.png" alt="Bloom flower icon">
+        <h1>Bloom</h1>
+        <p class="hero-copy">Quality Scripting Hub</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#games">Supported Games</a>
+          <a class="button secondary" href="#policy">Read Policy</a>
+        </div>
+
+        <div class="home-feature-grid">
+          <article class="home-feature">
+            <span>01</span>
+            <h3>Easy Access</h3>
+            <p>Anyone can buy in and get a clean, polished Bloom member experience.</p>
+          </article>
+          <article class="home-feature">
+            <span>02</span>
+            <h3>Smooth Runtime</h3>
+            <p>Focused on quick loading, low clutter, and a hub layout that feels easy to use.</p>
+          </article>
+          <article class="home-feature">
+            <span>03</span>
+            <h3>Weekly Updates</h3>
+            <p>Ready for steady improvements, game additions, and cleaner releases every week.</p>
+          </article>
+        </div>
+
+        <section class="home-block plan-options">
+          <div class="section-heading centered">
+            <h2>Plan Options</h2>
+            <p>Select your preferred access duration, then choose your payment method.</p>
+          </div>
+
+          <img class="mini-bloom" src="assets/bloom-icon.png" alt="">
+
+          <div class="plan-grid">
+            <article class="plan-card">
+              <h3>Weekly</h3>
+              <span>Starting from</span>
+              <strong>$5</strong>
+              <ul>
+                <li>7 days access</li>
+                <li>All features</li>
+                <li>Discord support</li>
+              </ul>
+              <button class="plan-buy" type="button" data-plan="Weekly" data-price="$5">Buy Now</button>
+            </article>
+
+            <article class="plan-card">
+              <h3>Monthly</h3>
+              <span>Starting from</span>
+              <strong>$10</strong>
+              <ul>
+                <li>30 days access</li>
+                <li>All features</li>
+                <li>Priority support</li>
+                <li>Member access support</li>
+              </ul>
+              <button class="plan-buy" type="button" data-plan="Monthly" data-price="$10">Buy Now</button>
+            </article>
+
+            <article class="plan-card plan-popular">
+              <div class="popular-pill">Most Popular</div>
+              <h3>Lifetime</h3>
+              <span>Starting from</span>
+              <strong>$25</strong>
+              <ul>
+                <li>Lifetime access</li>
+                <li>All future updates</li>
+                <li>VIP support</li>
+                <li>Lifetime access support</li>
+              </ul>
+              <button class="plan-buy" type="button" data-plan="Lifetime" data-price="$25">Buy Now</button>
+            </article>
+          </div>
+        </section>
+
+        <section class="home-block payment-options">
+          <div class="section-heading centered">
+            <h2>Secure Payment Options</h2>
+            <p>Choose your preferred payment method.</p>
+          </div>
+
+          <div class="payment-grid">
+            <article><span class="pay-icon robux">R$</span><strong>Robux</strong></article>
+            <article><span class="pay-icon paypal">PayPal</span><strong>PayPal</strong></article>
+            <article><span class="pay-icon cash">$</span><strong>Cash App</strong></article>
+            <article><span class="pay-icon apple">Apple</span><strong>Apple Pay</strong></article>
+            <article><span class="pay-icon crypto">BTC</span><strong>Crypto</strong></article>
+            <article><span class="pay-icon gift">Gift</span><strong>Gift Cards</strong></article>
+          </div>
+        </section>
+
+        <section class="home-block faq-section">
+          <div class="section-heading centered">
+            <h2>Frequently Asked Questions</h2>
+            <p>Everything you need to know about Bloom.</p>
+          </div>
+
+          <div class="faq-list">
+            <details>
+              <summary>Is Bloom safe and private?</summary>
+              <p>Bloom is designed around controlled access, clean updates, and a smooth user experience.</p>
+            </details>
+            <details>
+              <summary>What features are included with Bloom?</summary>
+              <p>Access includes the available hub features, supported games when added, updates, and support.</p>
+            </details>
+            <details>
+              <summary>How do I get access after payment?</summary>
+              <p>Access details can be sent through Discord once your purchase flow is connected.</p>
+            </details>
+            <details>
+              <summary>What payment methods do you accept?</summary>
+              <p>Robux, PayPal, Cash App, Apple Pay, crypto, and gift cards can be listed as options.</p>
+            </details>
+            <details>
+              <summary>Do you offer refunds?</summary>
+              <p>No. Bloom purchases are final. Check the Policy tab for the full refund policy.</p>
+            </details>
+            <details>
+              <summary>How long does it take to receive access?</summary>
+              <p>Delivery time depends on your setup, but this section is ready for your exact terms.</p>
+            </details>
+          </div>
+        </section>
+      </section>
+
+      <section class="page section prices-section" id="prices">
+        <div class="section-heading centered">
+          <h2>Prices</h2>
+          <p>Simple access options for Bloom. Replace these with your real prices when ready.</p>
+        </div>
+
+        <div class="price-grid">
+          <article class="price-card">
+            <span class="plan">Weekly</span>
+            <strong>$5</strong>
+            <p>Short access for testing Bloom.</p>
+            <ul>
+              <li>Script access for 7 days</li>
+              <li>Current supported games</li>
+              <li>Discord support</li>
+            </ul>
+            <button class="card-button" type="button" data-plan="Weekly" data-price="$5">Buy Weekly</button>
+          </article>
+
+          <article class="price-card featured">
+            <span class="badge">Popular</span>
+            <span class="plan">Monthly</span>
+            <strong>$10</strong>
+            <p>Best choice for regular users.</p>
+            <ul>
+              <li>Script access for 30 days</li>
+              <li>All available features</li>
+              <li>Priority updates</li>
+            </ul>
+            <button class="card-button" type="button" data-plan="Monthly" data-price="$10">Buy Monthly</button>
+          </article>
+
+          <article class="price-card">
+            <span class="plan">Lifetime</span>
+            <strong>$25</strong>
+            <p>One payment for long-term access.</p>
+            <ul>
+              <li>Lifetime script access</li>
+              <li>Future supported games</li>
+              <li>VIP support</li>
+            </ul>
+            <button class="card-button" type="button" data-plan="Lifetime" data-price="$25">Buy Lifetime</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="page section games-section" id="games">
+        <div class="section-heading centered">
+          <h2>Games Library</h2>
+          <p>Bloom is ready for your supported games list. Add titles here when your scripts are ready.</p>
+        </div>
+
+        <div class="game-tools">
+          <label class="search-box">
+            <span>Search</span>
+            <input id="game-search" type="search" placeholder="Search games...">
+          </label>
+          <div class="custom-select" data-select="sort">
+            <button type="button" aria-expanded="false">Newest first</button>
+            <div class="select-menu">
+              <button type="button" data-value="Newest first">Newest first</button>
+              <button type="button" data-value="Name (A-Z)">Name (A-Z)</button>
+              <button type="button" data-value="Status">Status</button>
+            </div>
+          </div>
+          <div class="custom-select" data-select="filter">
+            <button type="button" aria-expanded="false">All games</button>
+            <div class="select-menu">
+              <button type="button" data-value="All games">All games</button>
+              <button type="button" data-value="Live">Live</button>
+              <button type="button" data-value="Coming soon">Coming soon</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="game-summary">
+          <article><strong id="game-count">0</strong><span>Total Games</span></article>
+          <article><strong>Weekly</strong><span>Update Cycle</span></article>
+          <article><strong id="live-count">0</strong><span>Live Games</span></article>
+        </div>
+
+        <div class="game-grid" id="game-grid"></div>
+        <p class="empty-games" id="empty-games">No games match that search yet.</p>
+      </section>
+
+      <section class="page section policy-section" id="policy">
+        <a class="back-link" href="#home">Back to Home</a>
+        <div class="section-heading centered">
+          <h2>Refund Policy</h2>
+          <p>Important information about purchases and Bloom access.</p>
+        </div>
+
+        <div class="policy-grid">
+          <article class="policy-card danger">
+            <span class="policy-icon">!</span>
+            <h3>No Refunds Policy</h3>
+            <p>All Bloom purchases are final and non-refundable.</p>
+            <ul>
+              <li>We do not offer refunds for Bloom script purchases.</li>
+              <li>All sales are permanent and cannot be reversed.</li>
+              <li>No exceptions will be made to this policy.</li>
+            </ul>
+          </article>
+
+          <article class="policy-card">
+            <span class="policy-icon">=</span>
+            <h3>Purchase Terms</h3>
+            <p>What you receive with your purchase.</p>
+            <ul>
+              <li>Script access for the selected duration.</li>
+              <li>Feature access during the active period.</li>
+              <li>Discord support for technical issues.</li>
+            </ul>
+          </article>
+        </div>
+
+        <article class="policy-detail">
+          <div class="policy-title-row">
+            <span class="policy-icon">S</span>
+            <h3>Detailed Policy Information</h3>
+          </div>
+
+          <div class="policy-info-list">
+            <section>
+              <h4><span>1</span> Purchase Finality</h4>
+              <p>
+                By purchasing Bloom script access, you acknowledge that all sales are final. Once payment
+                is processed and access is granted, no refunds will be issued under any circumstances.
+                This includes technical issues, compatibility problems, or changes in personal circumstances.
+              </p>
+            </section>
+
+            <section>
+              <h4><span>!</span> No Exceptions Policy</h4>
+              <p>
+                We maintain a strict no-exceptions policy regarding refunds. This policy exists to ensure
+                fair treatment for all users and to maintain the integrity of our service. Please consider
+                your purchase carefully before proceeding.
+              </p>
+            </section>
+
+            <section>
+              <h4><span>?</span> Support & Assistance</h4>
+              <p>
+                While we cannot offer refunds, we are committed to providing support for legitimate
+                technical issues. Our Discord support team can help resolve problems you may encounter
+                while using Bloom.
+              </p>
+            </section>
+          </div>
+
+          <div class="important-notice">
+            <strong>Important Notice:</strong>
+            <p>
+              By completing your purchase, you agree to these terms and acknowledge that you have read
+              and understood our no-refund policy. Please be certain about your purchase before proceeding.
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <section class="page section login-section" id="login">
+        <div class="section-heading centered">
+          <h2>Login</h2>
+          <p>Bloom login is coming soon.</p>
+        </div>
+
+        <article class="coming-soon-card">
+          <img src="assets/bloom-icon.png" alt="">
+          <h3>Dashboard Coming Soon</h3>
+          <p>The login system will open here once Bloom accounts are ready.</p>
+          <a class="button primary" href="#home">Back Home</a>
+        </article>
+      </section>
+
+      <section class="page section key-section" id="key">
+        <div class="section-heading centered">
+          <h2>Your Bloom Key</h2>
+          <p>Payment confirmed. Save this key somewhere safe.</p>
+        </div>
+
+        <article class="key-card">
+          <img src="assets/bloom-icon.png" alt="">
+          <h3>Access Granted</h3>
+          <code id="delivered-key">BLOOM-WAITING-FOR-CONFIRMATION</code>
+          <p id="key-email-note">Your key was also prepared for email delivery.</p>
+          <a class="button primary" href="#home">Back Home</a>
+        </article>
+      </section>
+
+      <section class="page section invoice-status-section" id="invoice-status-page">
+        <div class="section-heading centered status-heading">
+          <h2>Order Status</h2>
+          <p>Track your payment, keep your invoice details, and unlock your Bloom key after approval.</p>
+        </div>
+
+        <article class="status-card">
+          <div class="status-hero">
+            <img src="assets/bloom-icon.png" alt="">
+            <div>
+              <span id="status-order">No invoice loaded</span>
+              <h3 id="status-title">Waiting for payment</h3>
+              <p id="status-copy">Your Bloom key will stay locked until the payment reaches 3 confirmations.</p>
+            </div>
+            <strong id="status-pill">Pending</strong>
+          </div>
+
+          <div class="status-progress" aria-label="Order progress">
+            <span class="is-done">Invoice</span>
+            <span id="status-progress-payment">Payment</span>
+            <span id="status-progress-key">Key</span>
+          </div>
+
+          <section class="status-product">
+            <div>
+              <span>Product</span>
+              <h3 id="status-product-name">Bloom Access</h3>
+              <p id="status-product-copy">Private script access delivered after payment confirmation.</p>
+            </div>
+            <strong id="status-product-price">$0</strong>
+          </section>
+
+          <div class="status-layout">
+            <section class="status-panel">
+              <div class="status-panel-title">
+                <span>Payment details</span>
+                <strong id="status-coin">Crypto</strong>
+              </div>
+              <div class="status-data-grid">
+                <div>
+                  <small>Plan</small>
+                  <strong id="status-plan">Bloom access</strong>
+                </div>
+                <div>
+                  <small>Total</small>
+                  <strong id="status-total">$0 USD</strong>
+                </div>
+                <div>
+                  <small>Confirmations</small>
+                  <strong id="status-confirmations">0 / 3</strong>
+                </div>
+                <div>
+                  <small>Delivery</small>
+                  <strong>Email + on-site</strong>
+                </div>
+              </div>
+              <label class="wallet-row">
+                Wallet address
+                <code id="status-wallet">Waiting for invoice details</code>
+              </label>
+              <button class="mini-action" id="copy-wallet" type="button">Copy Wallet</button>
+            </section>
+
+            <section class="status-panel key-vault">
+              <div class="status-panel-title">
+                <span>Product key</span>
+                <strong>Vault</strong>
+              </div>
+              <div class="status-lock">
+                <small>Key preview</small>
+                <code id="status-key">BLOOM-••••-••••-••••-••••</code>
+              </div>
+              <p>Your exact key is hidden until the blockchain payment reaches approval. Once approved, this vault unlocks and the key is emailed automatically.</p>
+            </section>
+          </div>
+
+          <div class="status-actions">
+            <button class="button primary" id="status-check" type="button">Check Payment Status</button>
+            <a class="button secondary" href="https://discord.gg/aYGe36G9cr">Need Help?</a>
+            <a class="button secondary" href="#home">Back Home</a>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <span>Bloom</span>
+      <p>Quality Scripting Hub.</p>
+    </footer>
+    <div class="checkout-modal" id="checkout-modal" aria-hidden="true">
+      <div class="checkout-panel" data-method="crypto" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
+        <button class="checkout-close" type="button" aria-label="Close checkout">×</button>
+        <div class="checkout-head">
+          <img src="assets/bloom-icon.png" alt="">
+          <div>
+            <span>Secure Bloom Checkout</span>
+            <h2 id="checkout-title">Buy Weekly</h2>
+            <p id="checkout-price">$5 access</p>
+          </div>
+        </div>
+
+        <div class="checkout-methods">
+          <button class="method-card is-active" type="button" data-method="crypto">
+            <strong>Crypto</strong>
+            <span>BTC, ETH, LTC, SOL</span>
+          </button>
+          <button class="method-card" type="button" data-method="card">
+            <strong>Card</strong>
+            <span>Coming soon</span>
+          </button>
+          <button class="method-card" type="button" data-method="discord">
+            <strong>Discord</strong>
+            <span>Manual order</span>
+          </button>
+        </div>
+
+        <div class="coin-select crypto-flow" id="coin-select">
+          <button class="coin-trigger" type="button" aria-expanded="false">
+            <span class="coin-logo"><img id="coin-selected-img" src="https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=040" alt=""></span>
+            <span>
+              <strong id="coin-selected-name">Bitcoin</strong>
+              <small id="coin-selected-meta">BTC network</small>
+            </span>
+          </button>
+          <div class="coin-menu" role="menu">
+            <button type="button" data-coin="BTC" data-name="Bitcoin" data-meta="BTC network">
+              <span class="coin-logo"><img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=040" alt=""></span>
+              <span><strong>Bitcoin</strong><small>BTC network</small></span>
+            </button>
+            <button type="button" data-coin="LTC" data-name="Litecoin" data-meta="LTC network">
+              <span class="coin-logo"><img src="https://cryptologos.cc/logos/litecoin-ltc-logo.png?v=040" alt=""></span>
+              <span><strong>Litecoin</strong><small>LTC network</small></span>
+            </button>
+            <button type="button" data-coin="ETH" data-name="Ethereum" data-meta="ETH mainnet">
+              <span class="coin-logo"><img src="https://cryptologos.cc/logos/ethereum-eth-logo.png?v=040" alt=""></span>
+              <span><strong>Ethereum</strong><small>ETH mainnet</small></span>
+            </button>
+            <button type="button" data-coin="SOL" data-name="Solana" data-meta="SOL network">
+              <span class="coin-logo"><img src="https://cryptologos.cc/logos/solana-sol-logo.png?v=040" alt=""></span>
+              <span><strong>Solana</strong><small>SOL network</small></span>
+            </button>
+          </div>
+        </div>
+
+        <label class="checkout-email crypto-flow">
+          Email for key delivery
+          <input id="checkout-email" type="email" placeholder="you@example.com" autocomplete="email">
+        </label>
+
+        <div class="checkout-summary crypto-flow">
+          <div>
+            <span>Order summary</span>
+            <strong id="checkout-summary-plan">Bloom Weekly</strong>
+          </div>
+          <div>
+            <span>Total due</span>
+            <strong id="checkout-summary-price">$5</strong>
+          </div>
+        </div>
+
+        <p class="checkout-note crypto-flow" id="invoice-status">Your full invoice, wallet address, payment status, and key vault will open on the next page.</p>
+
+        <button class="create-invoice crypto-flow" id="create-invoice" type="button">Continue to Invoice</button>
+
+        <div class="method-panel card-panel">
+          <span class="panel-icon">CARD</span>
+          <h3>Card checkout coming soon</h3>
+          <p>Card payments are being polished for Bloom. You can preview the form, but checkout is not live yet.</p>
+          <div class="card-preview-form">
+            <label>
+              Card number
+              <input type="text" inputmode="numeric" placeholder="4242 4242 4242 4242" disabled>
+            </label>
+            <div>
+              <label>
+                Exp date
+                <input type="text" inputmode="numeric" placeholder="MM / YY" disabled>
+              </label>
+              <label>
+                CVC
+                <input type="text" inputmode="numeric" placeholder="123" disabled>
+              </label>
+            </div>
+            <button type="button" disabled>Card checkout coming soon</button>
+          </div>
+          <a class="panel-button" href="https://discord.gg/aYGe36G9cr">Purchase through Discord</a>
+        </div>
+
+        <div class="method-panel discord-panel">
+          <span class="panel-icon">DC</span>
+          <h3>Manual Discord purchase</h3>
+          <p>Join the Bloom Discord and open a ticket. You can ask questions, confirm payment options, and get access manually.</p>
+          <a class="panel-button" href="https://discord.gg/aYGe36G9cr">Join Bloom Discord</a>
+        </div>
+      </div>
+    </div>
+    <script src="script.js?v=8"></script>
+  </body>
+</html>
